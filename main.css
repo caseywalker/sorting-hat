@@ -1,0 +1,10 @@
+hr {
+  display: block;
+  width: 96%;
+  height: 1px;
+}
+
+#studentButton {
+  height: 45px;
+  align-self: center;
+}
