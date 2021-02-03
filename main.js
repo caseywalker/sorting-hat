@@ -36,21 +36,21 @@ const newStudent = (e) => {
 
   const availableHouses = ['Gryffindor', 'Slytherin', 'Ravenclaw', 'Huffelpuff']
 
-  const housePicker = availableHouses[Math.floor(Math.random() * availableHouses.length)]
+  const house = availableHouses[Math.floor(Math.random() * availableHouses.length)]
 
   // Target form values //
-  const studentName = document.querySelector('#inputStudentName').value;
+  const name = document.querySelector('#inputStudentName').value;
   // Create unique ID for students 
   const studentIds = students.map(student => student.id).sort((a,b) => a - b);
 
   const id = studentIds.length ? studentIds[(studentIds.length - 1)] + 1 : 1;
   // Store values in obj //
   const obj = {
-    name: studentName,
-    house: housePicker,
-    id: id
+    name,
+    house,
+    id
   };
-  if (studentName.length === 0) {
+  if (name.length === 0) {
     warningMessage();
   } else {
   // Update data // 
