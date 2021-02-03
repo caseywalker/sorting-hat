@@ -1,7 +1,6 @@
 // ** Data Types **//
-const students = [
-
-];
+const students = [];
+const expelledStudents = [];
 
 // ** DOM Printer  **//
 const printToDom = (divId, textToPrint) => {
@@ -21,8 +20,25 @@ const studentBuilder = (taco) => {
       <button type="button" class="btn btn-secondary" id="${student.id}">Expel</button>
       </div> 
     </div>`;
-  }
+  };
   printToDom('#studentDiv', domString)
+}
+
+const voldemortBuilder = (taco) => {
+  let domString = ''
+  let voldemortIntro = `<h2>Voldemort's Army!</h2>`
+
+  for (const wizard of taco) {
+    domString += `<div class="card m-2" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">${wizard.name}</h5>
+      <p class="card-text">Gryffindor</p>
+      <button type="submit" class="btn btn-secondary">Expel</button>
+    </div>  
+  </div>`
+  }
+  printToDom('#voldemortIntro', voldemortIntro)
+  printToDom('#voldemortArmy', domString)
 }
 
 const warningMessage = () => {
@@ -60,7 +76,9 @@ const newStudent = (e) => {
   };
   // Reset the form //
   document.querySelector('form').reset();
-  // Event Listener for 'expel' button //
+  // Updating DOM with header for Student Section //
+  let houseIntro = `<h2>Hoggish Roggish Students</h2>`
+  printToDom('#houseIntro', houseIntro)
 };
 
 const handleButtonClick = (e) => {
@@ -87,9 +105,11 @@ const expelStudent = (e) => {
     const targetId = Number(e.target.id);
     if (targetType === 'button') {
     const studentIndex = students.findIndex(student => student.id === targetId);
-    students.splice(studentIndex, 1);
+    let expelled = students.splice(studentIndex, 1);
+    expelledStudents.push(...expelled)
     }
     studentBuilder(students);
+    voldemortBuilder(expelledStudents);
 }
 
 // ** Event Listeners **//
