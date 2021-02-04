@@ -2,6 +2,14 @@
 const students = [];
 const expelledStudents = [];
 
+// Images for House Styling //
+const gryffindorUrl = "https://m.media-amazon.com/images/I/71htSIb7LnL._AC_SX522_.jpg";
+const slytherinUrl = "https://m.media-amazon.com/images/I/91oivAdrlwL._AC_UL1500_.jpg";
+const ravenclawUrl = "https://images-na.ssl-images-amazon.com/images/I/71IgpxIE-cL._AC_SL1162_.jpg";
+const huffelpuffUrl = "https://images-na.ssl-images-amazon.com/images/I/711ztwoNU2L._AC_SX522_.jpg";
+const deathEaterUrl = "https://images-na.ssl-images-amazon.com/images/I/61j8BksetiL._SL1383_.jpg"
+
+
 // ** DOM Printer  **//
 const printToDom = (divId, textToPrint) => {
   const selectedDiv = document.querySelector(divId);
@@ -13,7 +21,8 @@ const studentBuilder = (taco) => {
   let domString = ' ';
 
   for (const student of taco) {
-    domString += `<div class="card m-2" style="width: 18rem;">
+    domString += `<div class="card m-2 ${student.house}" style="width: 18rem;">
+    <img src=${student.logo} class="card-img-top mt-2" alt="${student.house} logo">
     <div class="card-body">
       <h5 class="card-title">${student.name}</h5>
       <p class="card-text">${student.house}</p>
@@ -30,9 +39,10 @@ const voldemortBuilder = (taco) => {
 
   for (const wizard of taco) {
     domString += `<div class="card m-2" style="width: 18rem;">
+    <img src=${deathEaterUrl} class="card-img-top mt-2" alt="Death Eater logo">
     <div class="card-body">
       <h5 class="card-title">${wizard.name}</h5>
-      <p class="card-text">Gryffindor</p>
+      <p class="card-text">${wizard.name} has become a Death Eater!</p>
       <button type="submit" class="btn btn-secondary">Expel</button>
     </div>  
   </div>`
@@ -54,6 +64,8 @@ const newStudent = (e) => {
 
   const house = availableHouses[Math.floor(Math.random() * availableHouses.length)]
 
+  const logo = '';
+
   // Target form values //
   const name = document.querySelector('#inputStudentName').value;
   // Create unique ID for students 
@@ -64,8 +76,21 @@ const newStudent = (e) => {
   const obj = {
     name,
     house,
-    id
+    id,
+    logo
   };
+
+  // Setting the student object logo to image url variable by house //
+  if (obj.house === 'Gryffindor') {
+    obj.logo = gryffindorUrl
+  } else if (obj.house === 'Slytherin') {
+    obj.logo = slytherinUrl
+  } else if (obj.house === 'Ravenclaw') {
+    obj.logo = ravenclawUrl
+  } else if (obj.house === 'Huffelpuff') {
+    obj.logo = huffelpuffUrl
+  }
+
   if (name.length === 0) {
     warningMessage();
   } else {
@@ -74,6 +99,8 @@ const newStudent = (e) => {
   // Update DOM //
   studentBuilder(students);
   };
+
+  
   // Reset the form //
   document.querySelector('form').reset();
   // Updating DOM with header for Student Section //
