@@ -1,5 +1,4 @@
-#### README is completed with:
-- Name of the Project
+# Project Name
 Sorting Hat
 
 - Overview of the project
@@ -25,8 +24,11 @@ A user would be able to visit this app, and get sorted into a random house when 
  5. A user may hit the 'Expel' button and the student card will display in a new container labeled Voldemort's army. 
 
 - Screenshots of your project
+https://github.com/caseywalker/sorting-hat/blob/main/Ex1.PNG
+https://github.com/caseywalker/sorting-hat/blob/main/Ex2.PNG
 
 - List of contributors and links to their GH profiles
 Casey Walker https://github.com/caseywalker
 
-- Link to Loom video walkthrough of your app (no more than 1 minute long! Make it great)
+- Link to Loom video walkthrough of your app 
+https://www.loom.com/share/59e1a12ff8354e3e8acdadc2fc6b8037
