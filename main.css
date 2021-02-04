@@ -8,3 +8,26 @@ hr {
   height: 45px;
   align-self: center;
 }
+
+.Gryffindor {
+  border-color: #740001;
+}
+
+.Slytherin {
+  border-color: #1a472a;
+}
+
+.Huffelpuff {
+  border-color: #ecb939;
+}
+
+.Ravenclaw {
+  border-color: #0e1a40;
+}
+
+.card img {
+  display: block;
+  margin: auto;
+  height: 200px;
+  width: 175px;
+}
