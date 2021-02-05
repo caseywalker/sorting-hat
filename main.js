@@ -68,10 +68,18 @@ const newStudent = (e) => {
 
   // Target form values //
   const name = document.querySelector('#inputStudentName').value;
-  // Create unique ID for students 
-  const studentIds = students.map(student => student.id).sort((a,b) => a - b);
+  // Create array of unique IDs for students 
+  const uniqueStudents = students.map(wizard => wizard.id).sort(function(a, b) {
+    return a - b;
+  })
 
-  const id = studentIds.length ? studentIds[(studentIds.length - 1)] + 1 : 1;
+ // Unique ID assignment. Given uniqueId array for each student, increment by 1. 
+  let id = 0;
+  if (uniqueStudents.length >= 1) {
+    id = (uniqueStudents.length) + 1;
+  } else {
+    id = 1;
+  }
   // Store values in obj //
   const obj = {
     name,
@@ -96,6 +104,26 @@ const newStudent = (e) => {
   } else {
   // Update data // 
   students.push(obj);
+  // sort the students by name 
+  students.sort(function (a, b) {
+    let nameA = a.name.toUpperCase()
+    let nameB = b.name.toUpperCase()
+    if (nameA > nameB) {
+      return 1;
+    } else if (nameA < nameB) {
+      return -1;
+    }
+  });
+  // Testing sorting by house. Use this later by adding Event Listeners for sorting buttons. 
+  // students.sort(function (a, b) {
+  //   let houseA = a.house.toUpperCase()
+  //   let houseB = b.house.toUpperCase()
+  //   if (houseA > houseB) {
+  //     return 1;
+  //   } else if (houseA < houseB) {
+  //     return -1;
+  //   }
+  // });
   // Update DOM //
   studentBuilder(students);
   };
